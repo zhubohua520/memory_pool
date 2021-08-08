@@ -14,7 +14,7 @@ class MemoryChunk {
 public:
     MemoryChunk(uint size);
 
-    pvoid malloc();
+    pvoid malloc(uint size);
 
     ~MemoryChunk();
 

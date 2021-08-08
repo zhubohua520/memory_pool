@@ -10,7 +10,7 @@ MemoryPool::MemoryPool(uint size) {
 }
 
 MemoryPool::~MemoryPool() {
-    INFO_PRINT("MemoryPool调用析构函数");
+    INFO_PRINT("调用析构函数\n");
     delete (chunk);
 }
 

@@ -3,7 +3,6 @@
 //
 
 #include "../../include/memory/memory_cell.h"
-#include "../../include/common.h"
 
 MemoryCell::MemoryCell(uint start, uint size) : start(start), size(size) {
 
