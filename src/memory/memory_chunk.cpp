@@ -54,7 +54,7 @@ pvoid MemoryChunk::malloc(uint size) {
 
             used_list->push_front(split_cell);
 
-            p = split_cell;
+            p = get_cell_pointer(split_cell);
 
             break;
         }
@@ -67,4 +67,13 @@ pvoid MemoryChunk::malloc(uint size) {
     }
 
     return p;
+}
+
+pvoid MemoryChunk::get_data() {
+    return data;
+}
+
+pvoid MemoryChunk::get_cell_pointer(MemoryCell *cell) {
+
+    return (pvoid) ((ulong) data + cell->get_start() * align);
 }

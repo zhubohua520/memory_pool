@@ -42,6 +42,10 @@ public:
 
     list<MemoryChunk *> *get_used_list();
 
+    pvoid get_data();
+
+    pvoid get_cell_pointer(MemoryCell *cell);
+
 
 public:
     void print_available_list();

@@ -10,10 +10,19 @@ int main() {
 
 //    delete(cell);
 
-    MemoryPool *pool = new MemoryPool(156);
-    pvoid p = pool->get_chunk()->malloc(8);
+    MemoryPool *pool = new MemoryPool(8);
+    pvoid p = pool->get_chunk()->malloc(4);
 
-    printf("%X\n",p);
+    int *p_i = (int *) p;
+    *p_i = 9527;
+
+    printf("%X\n", p);
+
+    p = pool->get_chunk()->malloc(4);
+    p_i = (int *) p;
+    *p_i = 2;
+
+    printf("%X\n", p);
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
