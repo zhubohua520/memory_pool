@@ -7,15 +7,15 @@
 
 MemoryChunk::MemoryChunk(uint size) {
 
-    INFO_PRINT("开始申请内存\n");
+    INFO_PRINT("鐢宠鍐呭瓨涓猴細%d\n", size);
     align = ALIGN_SIZE;
 
-    //初始化chunk大小
+    //鍒濆鍖朿hunk澶у皬
     cell_num = (size - 1) / align + 1;
 
     size = cell_num * align;
-    INFO_PRINT("实际内存大小为：%d\n", size);
-    //真实分配内存
+    INFO_PRINT("瀹為檯鍒嗛厤鍐呭瓨涓猴細%d\n", size);
+    //鐪熷疄鍒嗛厤鍐呭瓨
     data = calloc(size, sizeof(byte));
 
 
@@ -30,7 +30,7 @@ MemoryChunk::MemoryChunk(uint size) {
 }
 
 MemoryChunk::~MemoryChunk() {
-    INFO_PRINT("调用析构函数\n");
+    INFO_PRINT("璋冪敤鏋愭瀯鍑芥暟\n");
 }
 
 pvoid MemoryChunk::malloc(uint size) {
@@ -62,7 +62,7 @@ pvoid MemoryChunk::malloc(uint size) {
     }
 
     if (flag) {
-        ERROR_PRINT("无法分配内存,触发GC\n");
+        ERROR_PRINT("鏃犳硶鍒嗛厤鍐呭瓨,瑙﹀彂GC\n");
         exit(1);
     }
 
