@@ -40,7 +40,7 @@ public:
 
     list<MemoryCell *> *get_available_list();
 
-    list<MemoryChunk *> *get_used_list();
+    list<MemoryCell *> *get_used_list();
 
     pvoid get_data();
 

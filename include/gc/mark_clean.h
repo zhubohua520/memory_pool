@@ -9,8 +9,11 @@
 
 class MarkClean : public GCFactory {
 
+
+
+
 public:
-    void run() override;
+    void run(MemoryChunk *chunk) override;
 
 };
 

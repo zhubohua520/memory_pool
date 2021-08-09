@@ -3,10 +3,12 @@
 //
 #pragma once
 
+#include "../../memory/memory_chunk.h"
+
 
 class GCFactory {
 
 public:
-    virtual void run() = 0;
+    virtual void run(MemoryChunk *chunk) = 0;
 
 };

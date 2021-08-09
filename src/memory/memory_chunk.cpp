@@ -77,3 +77,11 @@ pvoid MemoryChunk::get_cell_pointer(MemoryCell *cell) {
 
     return (pvoid) ((ulong) data + cell->get_start() * align);
 }
+
+list<MemoryCell *> *MemoryChunk::get_available_list() {
+    return available_list;
+}
+
+list<MemoryCell *> *MemoryChunk::get_used_list() {
+    return used_list;
+}

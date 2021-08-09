@@ -3,7 +3,14 @@
 //
 
 #include "../../include/gc/mark_clean.h"
+#include <list>
 
-void MarkClean::run() {
+
+using namespace std;
+
+void MarkClean::run(MemoryChunk *chunk) {
+
+    list<MemoryCell *> *used_list = chunk->get_used_list();
+
 
 }
