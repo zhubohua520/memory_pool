@@ -33,6 +33,9 @@ public:
 
     MemoryCell *set_size(uint size);
 
+    MemoryCell *split_front(uint size);
+
+    MemoryCell *split_back(uint size);
 
 public:
 

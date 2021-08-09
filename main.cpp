@@ -11,7 +11,9 @@ int main() {
 //    delete(cell);
 
     MemoryPool *pool = new MemoryPool(156);
-    pool->get_chunk()->malloc(8);
+    pvoid p = pool->get_chunk()->malloc(8);
+
+    printf("%X\n",p);
 
     std::cout << "Hello, World!" << std::endl;
     return 0;

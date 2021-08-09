@@ -29,9 +29,9 @@ private:
     //真实内存的指针
     pvoid data;
 
-    list<MemoryCell *> *available_list;
+    list<MemoryCell *> *available_list = new list<MemoryCell *>();
 
-    list<MemoryCell *> *used_list;
+    list<MemoryCell *> *used_list = new list<MemoryCell *>();
 
 public:
     uint get_cell_num();

@@ -54,3 +54,36 @@ MemoryCell *MemoryCell::set_size(uint size) {
     this->size = size;
     return this;
 }
+
+MemoryCell *MemoryCell::split_front(uint size) {
+
+    uint original_start = start;
+
+    start += size;
+
+    if (start > end) {
+        ERROR_PRINT("分不出cell");
+        exit(1);
+    }
+
+    MemoryCell *split_cell = new MemoryCell(original_start, size);
+
+
+    return split_cell;
+}
+
+MemoryCell *MemoryCell::split_back(uint size) {
+
+
+    end -= size;
+
+    if (end < start) {
+        ERROR_PRINT("分不出cell");
+        exit(1);
+    }
+
+    MemoryCell *split_cell = new MemoryCell(end, size);
+
+
+    return split_cell;
+}
