@@ -3,7 +3,8 @@
 //
 
 #include "../../include/memory/memory_chunk.h"
-
+#include "../../include/gc/interface/garbage_collect.h"
+#include "../../include/gc/gc_factory.h"
 
 MemoryChunk::MemoryChunk(uint size) {
 
@@ -62,12 +63,24 @@ pvoid MemoryChunk::malloc(uint size) {
     }
 
     if (flag) {
-        ERROR_PRINT("无法分配内存,触发GC\n");
-        exit(1);
+
+
+        //TODO
+
+//        GarbageCollect *gc = GCFactory::get_instance()->get_garbage_collect();
+
+        GCFactory *factory = GCFactory::get_instance();
+        GarbageCollect *gc = factory->get_garbage_collect();
+
+        gc->run(this);
+
     }
 
-    return p;
+
+    ERROR_PRINT("无法分配内存,触发GC\n");
+    exit(1);
 }
+
 
 pvoid MemoryChunk::get_data() {
     return data;

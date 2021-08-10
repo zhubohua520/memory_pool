@@ -12,5 +12,7 @@ void MarkClean::run(MemoryChunk *chunk) {
 
     list<MemoryCell *> *used_list = chunk->get_used_list();
 
+    INFO_PRINT("我进来了\n");
+
 
 }

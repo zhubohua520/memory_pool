@@ -1,19 +1,15 @@
 //
-// Created by zbh on 2021/8/9.
+// Created by zbh on 2021/8/10.
 //
 
 #pragma once
 
 #include "interface/garbage_collect.h"
 
+class MarkCollect : public GarbageCollect {
 
-class MarkClean : public GarbageCollect {
-
-
-
-public:
     void run(MemoryChunk *chunk) override;
-
 };
+
 
 
