@@ -66,6 +66,8 @@ MemoryCell *MemoryCell::split_front(uint size) {
         exit(1);
     }
 
+    this->size = end - start;
+
     MemoryCell *split_cell = new MemoryCell(original_start, size);
 
 

@@ -4,10 +4,11 @@
 
 #include "interface/garbage_collect.h"
 #include "mark_clean.h"
+#include <map>
 
 typedef enum {
-    WORKING,
-    STOP
+    STOP,
+    WORKING
 } GC_Status;
 
 
@@ -16,6 +17,8 @@ class GCFactory {
 
 private:
     GC_Status status;
+
+
 
 public :
     static GCFactory *get_instance() {
@@ -26,7 +29,7 @@ public :
 
 
 public:
-    GarbageCollect *get_garbage_collect();
+    void run_garbage_collect(MemoryChunk *chunk, GC_Type gc_type);
 
 
 };

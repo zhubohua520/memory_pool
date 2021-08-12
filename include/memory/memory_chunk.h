@@ -20,6 +20,7 @@ public:
 
 private:
 
+
     uint align;
 
     uint size;
@@ -45,6 +46,7 @@ public:
     pvoid get_data();
 
     pvoid get_cell_pointer(MemoryCell *cell);
+
 
 
 public:

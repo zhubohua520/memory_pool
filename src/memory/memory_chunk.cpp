@@ -48,7 +48,7 @@ pvoid MemoryChunk::malloc(uint size) {
 
         MemoryCell *cell = *iterator;
 
-        if (cell->get_size() > need_num) {
+        if (cell->get_size() >= need_num) {
             flag = false;
 
             MemoryCell *split_cell = cell->split_front(need_num);
@@ -67,18 +67,14 @@ pvoid MemoryChunk::malloc(uint size) {
 
         //TODO
 
-//        GarbageCollect *gc = GCFactory::get_instance()->get_garbage_collect();
-
-        GCFactory *factory = GCFactory::get_instance();
-        GarbageCollect *gc = factory->get_garbage_collect();
-
-        gc->run(this);
-
+        GCFactory::get_instance()->run_garbage_collect(this, DEFAULT_GC_TYPE);
+        p = malloc(size);
     }
 
 
-    ERROR_PRINT("无法分配内存,触发GC\n");
-    exit(1);
+//    ERROR_PRINT("无法分配内存,触发GC\n");
+//    exit(1);
+    return p;
 }
 
 

@@ -6,37 +6,46 @@
 #include "../../include/gc/mark_clean.h"
 #include "../../include/gc/mark_collect.h"
 #include "../../include/gc/mark_copy.h"
+#include "../../include/memory/memory_chunk.h"
 
 
-GarbageCollect *GCFactory::get_garbage_collect() {
+void GCFactory::run_garbage_collect(MemoryChunk *chunk, GC_Type gc_type) {
 
 
-    if (status == STOP) {
+    if (status == WORKING) {
         INFO_PRINT("GC在运行中...\n");
-        return nullptr;
+        return;
     }
+    GarbageCollect *garbage_collect;
 
+    status = WORKING;
 
-    switch (DEFAULT_GC_TYPE) {
+    switch (gc_type) {
         case GC_MARK_CLEAN: {
             MarkClean *clean = new MarkClean();
 
-            return (GarbageCollect *) clean;
+            garbage_collect = (GarbageCollect *) clean;
+            break;
         }
         case GC_MARK_COLLECT: {
             MarkCollect *collect = new MarkCollect();
 
-            return (GarbageCollect *) collect;
+            garbage_collect = (GarbageCollect *) collect;
+            break;
         }
         case GC_MARK_COPY: {
             MarkCopy *copy = new MarkCopy();
 
-            return (GarbageCollect *) copy;
+            garbage_collect = (GarbageCollect *) copy;
+            break;
         }
         case GC_G1: {
             ERROR_PRINT("没有实现G1\n");
             exit(1);
         }
     }
-    return nullptr;
+
+    garbage_collect->run(chunk);
+
+    status = STOP;
 }

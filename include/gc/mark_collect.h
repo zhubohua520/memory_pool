@@ -9,6 +9,9 @@
 class MarkCollect : public GarbageCollect {
 
     void run(MemoryChunk *chunk) override;
+
+
+//    void swap(MemoryCell)
 };
 
 
